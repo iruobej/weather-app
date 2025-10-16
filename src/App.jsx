@@ -26,12 +26,14 @@ function App() {
         placeholder="Please enter a city"
         value={query}
         onChange={(e) => setQuery(e.target.value)}
-      />
+        style={{marginBottom: "10px"}}
+      /><br></br>
       <button onClick={getData}>Get Weather</button>
 
       {/*Only rendering IF there is api data present*/}
       {data && 
-        <div>
+        /*"weatherInfo show" means youre assigning the div properties of BOTH classes */
+        <div key={data.location.name} className={"weatherInfo"}>
           <img src={data.current.condition.icon} alt="" />
           <h2>{data.location.name}, {data.location.country}</h2>
           <h3>{data.current.condition.text}</h3>
